@@ -1,0 +1,28 @@
+<%= form_with model: @article, local: true do |form| %>
+  <% if @article.errors.any? %>
+    <div>
+      <strong>
+        Please fix <%= pluralize(@article.errors.count, 'error') %>:
+      </strong>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
